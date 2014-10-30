@@ -51,61 +51,8 @@ from pygraph.algorithms.searching import depth_first_search
 from pygraph.algorithms.cycles import find_cycle
 from pygraph.algorithms.critical import *
 
-# created a directed graph
-gr = digraph()
 
-gr.add_nodes(["Portugal","Spain","France","Germany","Belgium","Netherlands","Italy"])
-gr.add_nodes(["Switzerland","Austria","Denmark","Poland","Czech Republic","Slovakia","Hungary"])
-gr.add_nodes(["England","Ireland","Scotland","Wales"])
 
-gr.add_edge(("Portugal", "Spain"))
-gr.add_edge(("Spain","France"))
-gr.add_edge(("France","Belgium"))
-gr.add_edge(("France","Germany"))
-gr.add_edge(("France","Italy"))
-gr.add_edge(("Belgium","Netherlands"))
-gr.add_edge(("Germany","Belgium"))
-gr.add_edge(("Germany","Netherlands"))
-gr.add_edge(("England","Wales"))
-gr.add_edge(("England","Scotland"))
-gr.add_edge(("Scotland","Wales"))
-gr.add_edge(("Switzerland","Austria"))
-gr.add_edge(("Switzerland","Germany"))
-gr.add_edge(("Switzerland","France"))
-gr.add_edge(("Switzerland","Italy"))
-gr.add_edge(("Austria","Germany"))
-gr.add_edge(("Austria","Italy"))
-gr.add_edge(("Austria","Czech Republic"))
-gr.add_edge(("Austria","Slovakia"))
-gr.add_edge(("Austria","Hungary"))
-gr.add_edge(("Denmark","Germany"))
-gr.add_edge(("Poland","Czech Republic"))
-gr.add_edge(("Poland","Slovakia"))
-gr.add_edge(("Poland","Germany"))
-gr.add_edge(("Czech Republic","Slovakia"))
-gr.add_edge(("Czech Republic","Germany"))
-gr.add_edge(("Slovakia","Hungary"))
-gr.add_edge(("Germany", "Austria"))
-gr.add_edge(("Germany", "Portugal"))
-
-gr2 = digraph()
-
-gr2.add_node(("test", 1))
-gr2.add_node(("test", 2))
-print gr
-print gr2
-
-finalgr = gr.add_graph(gr2)
-
-print finalgr
-
-st, pre, post = depth_first_search(gr, root='Germany')
-# print st
-# print pre
-
-#print (gr.neighbors("Germany"))
-#print
-#print (gr.incidents('Germany'))
 
 def build_graph(filename, graph):
   """
@@ -121,15 +68,43 @@ def build_graph(filename, graph):
   # loop through every single line in the dictionary and parse
   # for translation information
   source = ''
-  target = ''
-  count = 0
   for line in f:
     text = line.split()
     if len(text) != 0:
-      source = text[0]
-  #   outf.write(source + '\n')
-      if not gr.has_node(source):
-        gr.add_node(source)
+
+      source = " ".join(text[:text.index('{')])
+      start = text.index('::') + 1
+      target_list = text[start:]
+      # an empty list to store the final target senses
+      targets = []
+      prev = 0
+      current = 0
+      curly = 0
+      if len(target_list) != 0:
+        # using a stack structure to trim out our targets
+        while target_list:
+          if '(' in target_list[0]:
+            while not ')' in target_list[0]:
+              target_list.pop(0)
+            target_list.pop(0)
+          elif '{' in target_list[0]:
+            target_list.pop(0)
+
+
+"""
+        for target in target_list:
+          if '{' in target:
+            curly = target_list.index(target)
+
+          if ';' in target or ',' in target:
+            current = target_list.index(target)
+            if current == 0:
+              targets.append(target[:-1])
+            else:
+              if prev < curly and curly < current:
+"""                
+        if not gr.has_node(source):
+          gr.add_node(source)
 
   # outf.close()
   f.close()
