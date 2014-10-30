@@ -8,35 +8,11 @@
 from __future__ import division
 
 import os
-
 import nltk, re, pprint
 from nltk import *
 from nltk.corpus import brown
 import urllib 
-#from urllib import request
 
-import bs4
-from bs4 import BeautifulSoup # get text out of HTML
-
-# url = "http://news.bbc.co.uk/2/hi/health/2284783.stm"
-# response = urllib.urlopen(url)
-# html = response.read().decode('utf8')
-# raw = BeautifulSoup(html).get_text()
-# tokens = word_tokenize(raw)
-# print(tokens)
-# text = nltk.Text(tokens)
-# print(text)
-# words = [w.lower() for w in tokens]
-# vocab = sorted(set(words))
-# print(vocab)
-# print(re.split(' ', raw))
-
-# for word in tokens:
-#   freqdist[word.lower()] += 1
-#   print(freqdist.most_common(n))
-
-# tree1 = nltk.Tree('NP', ['Alice'])
-# print(tree1)
 import sys
 import codecs
 sys.path.append('..')
@@ -71,40 +47,76 @@ def build_graph(filename, graph):
   for line in f:
     text = line.split()
     if len(text) != 0:
-
-      source = " ".join(text[:text.index('{')])
+      index = line.index('{')
+      source = line[:index - 1]
+      if not gr.has_node(source):
+        gr.add_node(source)
       start = text.index('::') + 1
       target_list = text[start:]
       # an empty list to store the final target senses
       targets = []
-      prev = 0
-      current = 0
-      curly = 0
+
       if len(target_list) != 0:
         # using a stack structure to trim out our targets
+        sense = ''
         while target_list:
           if '(' in target_list[0]:
+            if sense != '':
+              targets.append(sense)
+              sense = ''
             while not ')' in target_list[0]:
               target_list.pop(0)
             target_list.pop(0)
           elif '{' in target_list[0]:
+            if sense != '':
+              targets.append(sense)
+              sense = ''
+            while not '}' in target_list[0]:
+              target_list.pop(0)
             target_list.pop(0)
 
-
-"""
-        for target in target_list:
-          if '{' in target:
-            curly = target_list.index(target)
-
-          if ';' in target or ',' in target:
-            current = target_list.index(target)
-            if current == 0:
-              targets.append(target[:-1])
+          elif '[' in target_list[0]:
+            if sense != '':
+              targets.append(sense)
+              sense = ''
+            while not ']' in target_list[0]:
+              target_list.pop(0)
+            target_list.pop(0)
+          else:
+            sense += target_list.pop(0)
+            if ',' in sense or ';' in sense:
+              sense = sense[:-1]
+              targets.append(sense)
+              sense = ''
             else:
-              if prev < curly and curly < current:
-"""                
-        if not gr.has_node(source):
-          gr.add_node(source)
+              sense += ' '
+
+        # add the last sense in the translation stack 
+        if sense != '':
+          targets.append(sense)
+
+      # trim out the trailing ' ' in the target strings
+      # and add en edge for each sense if not already in the graph
+      if len(targets) != 0:
+        for target in targets:
+          if target[-1] == ' ':
+            index = targets.index(target)
+            target = target[:-1]
+            targets[index] = target
+            if ' ' not in target:
+              if not gr.has_node(target):
+                gr.add_node(target)
+              if not gr.has_edge((source, target)):
+                gr.add_edge((source, target))
+          else:
+            if ' ' not in target:
+              if not gr.has_node(target):
+                gr.add_node(target)
+              if not gr.has_edge((source, target)):
+                gr.add_edge((source, target))
+              
+                  
+
 
   # outf.close()
   f.close()
