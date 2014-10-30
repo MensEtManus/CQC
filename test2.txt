@@ -1,0 +1,22 @@
+abaliénation {f} [obsolete] :: abalienation
+abalone {m} [gastronomy, uncommon] :: The abalone
+abandon {m} :: abandonment
+abandon {m} :: surrender
+abandon {m} [uncountable] :: complete neglect
+abandonné {adj} :: given up, abandoned
+abandonné {m} :: An abandonee, one who is abandoned
+abandonnataire {adj} [legal] :: Which benefits from another party giving up something
+abandonnataire {mf} [legal] :: A natural or moral person who benefits from another party giving up something
+abandonnateur {adj} [legal] :: Which gives up something
+abandonnateur {m} [legal] :: A natural or moral person who gives up something
+abandonnement {m} [dated] :: Moral neglect
+abandonnement {m} [dated] :: The act of abandoning; abandonment
+abandonnement {m} [dated] :: The act of giving up or surrendering when faced with something
+abandonnement {m} [dated] :: The state resulting of such an act
+abandonnement {m} [legal] :: The transfer of goods or other values in a situation of indivision that allow all owners to receive their share
+abandonner {v} :: to abandon, forsake
+abandonner {v} :: to give up
+abandonneur {adj} [uncommon] :: Which abandons or gives up
+abandonneur {m} [uncommon] :: Somebody who abandons or gives up
+abandonneuse {f} :: feminine form of abandonneur
+

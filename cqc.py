@@ -38,6 +38,7 @@ from bs4 import BeautifulSoup # get text out of HTML
 # tree1 = nltk.Tree('NP', ['Alice'])
 # print(tree1)
 import sys
+import codecs
 sys.path.append('..')
 #sys.path.append('/usr/lib/graphviz/python/')
 sys.path.append('/usr/local/Cellar/graphviz/')
@@ -87,13 +88,76 @@ gr.add_edge(("Slovakia","Hungary"))
 gr.add_edge(("Germany", "Austria"))
 gr.add_edge(("Germany", "Portugal"))
 
+gr2 = digraph()
 
-if gr.has_edge(("Spain", "France")):
-  print 'France is reachable from Spain'
+gr2.add_node(("test", 1))
+gr2.add_node(("test", 2))
+print gr
+print gr2
+
+finalgr = gr.add_graph(gr2)
+
+print finalgr
+
 st, pre, post = depth_first_search(gr, root='Germany')
-print st
-print pre
+# print st
+# print pre
 
-print (gr.neighbors("Germany"))
-print
-print (gr.incidents('Germany'))
+#print (gr.neighbors("Germany"))
+#print
+#print (gr.incidents('Germany'))
+
+def build_graph(filename, graph):
+  """
+  Given the dictionary file, build the graph for the dictionary
+  return the graph built
+  """
+  gr = graph 
+
+  # open and read the file
+  f = codecs.open(filename, 'rU', 'utf-8')
+  
+  # outf = codecs.open('sample_graph.txt', 'w', 'utf-8')
+  # loop through every single line in the dictionary and parse
+  # for translation information
+  source = ''
+  target = ''
+  count = 0
+  for line in f:
+    text = line.split()
+    if len(text) != 0:
+      source = text[0]
+  #   outf.write(source + '\n')
+      if not gr.has_node(source):
+        gr.add_node(source)
+
+  # outf.close()
+  f.close()
+
+  return gr 
+
+def main():
+  """ the main function to execute the CQC algorithm """
+
+  args = sys.argv[1:]
+
+  if not args:
+    print 'usage: dict1 dict2'
+    sys.exit(1)
+  
+  file1 = args[0]
+  file2 = args[1]
+
+  # Initialize a empty graph G = (V, E)
+  graph = digraph()
+  
+  # build the graph based on the en-french dict file
+  graph = build_graph(file1, graph)
+  
+  print graph
+  # keep building the graph based on the french-en dict file
+ # graph = build_graph(file2, graph) 
+  
+# This is the standard boilerplate that calls the main() function.
+if __name__ == '__main__':
+  main()

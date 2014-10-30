@@ -1,0 +1,26 @@
+Aalenian {adj} (of or pertaining to the Aalenian period) :: aalénien
+Aalenian {prop} (subdivision of the Middle Jurassic period) :: Aalénien {m}
+Aar {prop} /ɑɹ/ (A river in Switzerland) :: Aar
+Aarau {prop} /ˈaːrau/ (Swiss town) :: Aarau
+aardvark {n} /ˈɑɹdˌvɑɹk/ (mammal) :: oryctérope {m}
+aardwolf {n} /ˈɑɹd.ˌwʊlf/ (the mammal species Proteles cristatus) :: protèle {m}
+Aargau {prop} (canton) :: Argovie
+Aaron {prop} /ˈɛɹ.ən/ (biblical brother of Moses) :: Aaron
+Aaron {prop} (male given name) :: Aaron
+Aaron's rod {n} /ˈɜɹ.ənz ɹɑd/ (mullein) SEE: mullein ::
+Aaron's rod {n} (goldenrod) SEE: goldenrod ::
+Aaron's rod {n} (orpine) SEE: orpine ::
+ab {n} /æb/ (abdominal muscle) :: abdo
+abaca {n} /ˌæb.əˈkɑ/ (plant) :: abaca {m}
+abaca {n} (fiber/fibre) SEE: Manila hemp ::
+aback {adv} /əˈbæk/ (backwards) :: en arrière
+aback {n} (abacus) SEE: abacus ::
+abacus {n} /əˈbɑk.əs/ (calculating frame) :: abaque {m}, boulier {m}, boulier compteur {m}
+abacus {n} (uppermost member of the capital of a column) :: abaque {f}, tailloir {m}
+a bad workman always blames his tools {proverb} (not the tools but how they're employed) :: à méchant ouvrier, point de bon outil
+abaft {adv} ((nautical) on the aft side) :: sur l'arrière, vers l'arrière
+abaft {prep} /əˈbɑft/ ((nautical) behind; toward the stern relative to some other object or position; aft of) :: en arrière de, sur l'arrière de
+abaka {n} (fiber/fibre) SEE: Manila hemp ::
+abaka {n} (plant) SEE: abaca ::
+abalone {n} /æb.əˈloʊ.ni/ (edible univalve mollusc) :: ormeau {m}, haliotide {f}
+
