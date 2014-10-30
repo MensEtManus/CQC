@@ -4833,7 +4833,6 @@ audience {f} :: audience, viewer
 audimat {m} :: ratings (TV)
 audiogramme {m} :: audiogram
 audiovisuel {adj} :: audiovisual
-audit {contraction} :: contraction of à + [[ledit#French
 audit {m} :: audit
 auditer {v} :: to audit
 auditeur {m} :: auditor

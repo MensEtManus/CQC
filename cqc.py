@@ -47,7 +47,9 @@ def build_graph(filename, graph):
   for line in f:
     text = line.split()
     if len(text) != 0:
-      index = line.index('{')
+      index = line.find('{')
+      if index == -1:
+        continue
       source = line[:index - 1]
       if not gr.has_node(source):
         gr.add_node(source)
@@ -64,30 +66,41 @@ def build_graph(filename, graph):
             if sense != '':
               targets.append(sense)
               sense = ''
-            while not ')' in target_list[0]:
-              target_list.pop(0)
             target_list.pop(0)
+            while len(target_list) != 0 and not ')' in target_list[0]:
+              target_list.pop(0)
+              if len(target_list) == 1:
+                break
+            if len(target_list) != 0:
+              target_list.pop(0)
           elif '{' in target_list[0]:
             if sense != '':
               targets.append(sense)
               sense = ''
-            while not '}' in target_list[0]:
-              target_list.pop(0)
             target_list.pop(0)
+            while len(target_list) != 0 and not '}' in target_list[0]:
+              target_list.pop(0)
+            if len(target_list) != 0:
+              target_list.pop(0)
 
           elif '[' in target_list[0]:
             if sense != '':
               targets.append(sense)
               sense = ''
-            while not ']' in target_list[0]:
-              target_list.pop(0)
             target_list.pop(0)
+            while len(target_list) != 0 and not ']' in target_list[0]:
+              target_list.pop(0)
+              if len(target_list) == 1:
+                break
+            if len(target_list) != 0:
+              target_list.pop(0)
           else:
             sense += target_list.pop(0)
             if ',' in sense or ';' in sense:
               sense = sense[:-1]
-              targets.append(sense)
-              sense = ''
+              if sense != '':
+                targets.append(sense)
+                sense = ''
             else:
               sense += ' '
 
@@ -103,18 +116,16 @@ def build_graph(filename, graph):
             index = targets.index(target)
             target = target[:-1]
             targets[index] = target
-            if ' ' not in target:
-              if not gr.has_node(target):
-                gr.add_node(target)
-              if not gr.has_edge((source, target)):
-                gr.add_edge((source, target))
+            if not gr.has_node(target):
+              gr.add_node(target)
+            if not gr.has_edge((source, target)):
+              gr.add_edge((source, target))
           else:
-            if ' ' not in target:
-              if not gr.has_node(target):
-                gr.add_node(target)
-              if not gr.has_edge((source, target)):
-                gr.add_edge((source, target))
-              
+            if not gr.has_node(target):
+              gr.add_node(target)
+            if not gr.has_edge((source, target)):
+              gr.add_edge((source, target))
+            
                   
 
 
@@ -140,6 +151,10 @@ def main():
   
   # build the graph based on the en-french dict file
   graph = build_graph(file1, graph)
+#  print graph
+  print
+  # build the graph based on the french-en dict file
+  graph = build_graph(file2, graph)
   
   print graph
   # keep building the graph based on the french-en dict file
