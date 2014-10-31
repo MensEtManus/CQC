@@ -1,0 +1,58 @@
+output/work.gv.pdf	afflict
+	travail
+	fonctionner
+	"to believe"
+	broder
+	"être en couches"
+	"to agree"
+	plastie
+	"to embroider"
+	labor
+	actionner
+	"être en travail"
+	"to struggle"
+	peiner
+	"to cause pain to"
+	"to function"
+	"to study"
+	"se travailler"
+	marcher
+	"tâche"
+	job
+	"métier"
+	"corvée"
+	task
+	"to work"
+	travailler
+	work
+	"to walk"
+	toil
+		travail -> "être en couches"
+		travail -> labor
+		travail -> "être en travail"
+		travail -> peiner
+		travail -> job
+		broder -> "to embroider"
+		peiner -> afflict
+		peiner -> "to struggle"
+		peiner -> "to cause pain to"
+		peiner -> toil
+		marcher -> "to believe"
+		marcher -> "to agree"
+		marcher -> "to function"
+		marcher -> "to walk"
+		"tâche" -> task
+		job -> plastie
+		job -> "tâche"
+		job -> "métier"
+		task -> "corvée"
+		travailler -> "to study"
+		travailler -> "to work"
+		work -> fonctionner
+		work -> broder
+		work -> actionner
+		work -> travail
+		work -> "se travailler"
+		work -> marcher
+		toil -> travailler
+}
