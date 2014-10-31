@@ -1,0 +1,70 @@
+output/bonjour.gv.pdf	arc
+	"au revoir"
+	salut
+	saluer
+	"eh oh ?"
+	"Good day"
+	"used to confirm that the person being addressed is listening"
+	"oh eh ?"
+	"or to confirm if anyone is listening"
+	"faire une révérence"
+	"ohé !"
+	"allô"
+	"allô ?"
+	bye
+	courber
+	"good afternoon..."
+	adieu
+	"fléchir"
+	"révérence"
+	"good morning"
+	wave
+	"s'incliner"
+	hi
+	bonjour
+	vague
+	ondulation
+	"étrave"
+	proue
+	bow
+	onduler
+	archet
+	goodbye
+	Salutation
+	salvation
+	hello
+		salut -> bye
+		salut -> wave
+		salut -> hi
+		salut -> bow
+		salut -> goodbye
+		salut -> salvation
+		"allô" -> "used to confirm that the person being addressed is listening"
+		"allô" -> "or to confirm if anyone is listening"
+		wave -> saluer
+		wave -> ondulation
+		wave -> vague
+		wave -> onduler
+		bonjour -> "Good day"
+		bonjour -> "good afternoon..."
+		bonjour -> Salutation
+		bonjour -> "good morning"
+		bonjour -> hello
+		bow -> arc
+		bow -> "faire une révérence"
+		bow -> "révérence"
+		bow -> archet
+		bow -> "fléchir"
+		bow -> "étrave"
+		bow -> proue
+		bow -> courber
+		bow -> "s'incliner"
+		goodbye -> "au revoir"
+		goodbye -> adieu
+		hello -> "eh oh ?"
+		hello -> "oh eh ?"
+		hello -> "ohé !"
+		hello -> "allô"
+		hello -> "allô ?"
+		hello -> salut
+}

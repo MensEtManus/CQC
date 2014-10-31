@@ -1,0 +1,28 @@
+output/travail.gv.pdf	"métier"
+	"être en couches"
+	travail
+	afflict
+	"tâche"
+	work
+	"être en travail"
+	labor
+	job
+	"to struggle"
+	peiner
+	toil
+	"to cause pain to"
+	plastie
+		travail -> "être en couches"
+		travail -> job
+		travail -> labor
+		travail -> "être en travail"
+		travail -> peiner
+		job -> "métier"
+		job -> "tâche"
+		job -> work
+		job -> plastie
+		peiner -> afflict
+		peiner -> "to struggle"
+		peiner -> toil
+		peiner -> "to cause pain to"
+}

@@ -30,6 +30,8 @@ from pygraph.algorithms.searching import depth_first_search
 from pygraph.algorithms.cycles import find_cycle
 from pygraph.algorithms.critical import *
 from pygraph.readwrite.markup import *
+from pygraph.algorithms.filters.radius import radius
+
 
 def gen_gv(graph, word):
   """
@@ -37,7 +39,7 @@ def gen_gv(graph, word):
   depth first search result on the given graph
   """
 
-  st, pre, post = depth_first_search(graph, root=word)
+  st, pre, post = depth_first_search(graph, root=word, filter=radius(2))
   gst = digraph()
   gst.add_spanning_tree(st)
   
@@ -189,7 +191,10 @@ def main():
   # build the graph based on the french-en dict file
   graph = build_graph(file2, graph)
 
-  gen_gv(graph, source)
+  print graph[source]
+
+  # generate a gv dot file for the source word
+  # gen_gv(graph, source)
  
 
   
